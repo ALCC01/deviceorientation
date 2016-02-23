@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RemoteMouse</title>
+</head>
+<body>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        button {
+            width: 94%;
+            height: 25%;
+            padding: 0;
+            margin: 1% auto;
+            border: none;
+            color: white;
+            display: block;
+        }
+        #left {
+            background-color: #673AB7;
+        }
+        #right {
+            background-color: #2196F3;
+        }
+        #release {
+            background-color: #F44336;
+        }
+    </style>
+    <button onclick="leftClick()" id="left">Left Click</button>
+    <button onclick="rightClick()" id="right">Right Click</button>
+    <button onclick="lock()" id="release">Release</button>
+    <script src="js/gyronorm.complete.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io();
+        var gn = new GyroNorm();
+        var release = false;
+
+        function leftClick() {
+            socket.emit('left_click', {});
+        }
+
+        function rightClick() {
+            socket.emit('right_click', {})
+        }
+
+        function lock() {
+            release = !release;
+        }
+
+        gn.init({frequency: 20, decimalCount: 0}).then(function(){
+            gn.start(function(data){
+                if (!release) {
+                    socket.emit('data', data.do);
+                }
+            });
+        }).catch(function(e){
+            alert('DeviceOrientation or DeviceMotion are not supported by this device')
+        });
+    </script>
+</body>
+</html>

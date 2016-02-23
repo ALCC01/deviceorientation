@@ -1,0 +1,17 @@
+{
+  "name": "remotemouse",
+  "version": "1.0.0",
+  "description": "Device orientation APIs experiment based on gyronorm.js and Socket.io",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --harmony ./app.js"
+  },
+  "author": "Alberto Coscia",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^4.13.4",
+    "robotjs": "^0.3.7",
+    "socket.io": "^1.4.5"
+  }
+}
