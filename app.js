@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
         var x_variation = robot.getScreenSize().width / 2 * x;
         var y = Math.ceil((data.beta / 10) * sensibility) / sensibility;
         var y_variation = robot.getScreenSize().height / 2 * y;
-        console.log('x: %s, y: %s, x: %s, y %s', x_percentage, y_percentage, x_variation, y_variation);
+        console.log('x: %s, y: %s, x: %s, y %s', x, y, x_variation, y_variation);
         robot.moveMouse(robot.getScreenSize().width / 2 + x_variation, robot.getScreenSize().height / 2 +  y_variation)
     });
 
