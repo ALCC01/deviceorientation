@@ -30,9 +30,8 @@ that then is used to calculate the angular velocity to apply to the car.
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
        
 This software also includes:
- 
- * gyronorm.js, licensed by Doruk Eker under the MIT License:
- 
+
+gyronorm.js, licensed by Doruk Eker under the MIT License:
 
     The MIT License (MIT)       
     Copyright (c) Doruk Eker
@@ -55,8 +54,7 @@ This software also includes:
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
- * Phaser, licensed by Richard Davey, Photon Storm Ltd. under the MIT License:
-
+Phaser, licensed by Richard Davey, Photon Storm Ltd. under the MIT License:
 
     The MIT License (MIT)
     Copyright (c) 2015 Richard Davey, Photon Storm Ltd.
