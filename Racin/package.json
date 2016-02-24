@@ -1,0 +1,16 @@
+{
+  "name": "racin",
+  "version": "1.0.0",
+  "description": "A racing game based on device orientation APIs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --harmony ./app.js"
+  },
+  "author": "Alberto Coscia",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^4.13.4",
+    "socket.io": "^1.4.5"
+  }
+}

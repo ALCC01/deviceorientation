@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controller</title>
+</head>
+<body>
+    <h1>Hey there</h1>
+    <script src="/js/gyronorm.complete.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        screen.orientation.lock('landscape');
+        var socket = io();
+        var gn = new GyroNorm();
+
+        gn.init({frequency: 100, decimalCount: 0}).then(function(){
+            gn.start(function(data){
+                socket.emit('data', data.do);
+            });
+        }).catch(function(e){
+            alert('DeviceOrientation or DeviceMotion are not supported by this device')
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Racin'</title>
+</head>
+<body>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script src="/js/phaser.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, '', { preload: preload, create: create, update: update});
+        var car;
+
+        function preload() {
+            game.load.image('car', '/img/car.png');
+        }
+
+        function create() {
+            game.physics.startSystem(Phaser.Physics.P2JS);
+            game.stage.backgroundColor = "#444444";
+
+            style = { font: "32px Arial", fill: "white", align: "center"};
+            text = game.add.text(game.width / 4, game.height / 4, "Visit " + document.URL + "device from a mobile device\nto control the car", style);
+
+            car = game.add.sprite(game.width / 2, game.height / 2, 'car');
+            car.scale.setTo(0.07, 0.07);
+            game.physics.p2.enable(car);
+            car.body.angularDrag = 200;
+        }
+
+        function update() {
+
+        }
+
+        socket.on('data', function(data) {
+            // Car may be not be already initialized
+            if (car && data.beta < 40 && data.beta > -40) {
+                car.body.thrust(-1000);
+                car.body.rotateRight(data.beta);
+            }
+        })
+    </script>
+</body>
+</html>
